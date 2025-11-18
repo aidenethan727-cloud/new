@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Interactive Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#">MyPortfolio</a>
+      <nav class="nav" id="nav">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <button class="btn ghost" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">☰</button>
+    </div>
+    <div class="float-shapes" aria-hidden="true"></div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <h1 class="reveal">Hi — I'm Alex. I design delightful web experiences.</h1>
+          <p class="muted reveal">I build responsive, accessible, and animated frontends that feel alive.</p>
+          <div class="hero-cta reveal">
+            <a class="btn" href="#projects">See my work</a>
+            <a class="btn ghost" href="#contact">Hire me</a>
+          </div>
+        </div>
+        <div class="hero-visual reveal">
+          <!-- Simple SVG illustration -->
+          <svg width="360" height="240" viewBox="0 0 360 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="10" width="340" height="220" rx="18" fill="url(#g)"/>
+            <defs>
+              <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#7C3AED" stop-opacity="0.95"/>
+                <stop offset="1" stop-color="#06B6D4" stop-opacity="0.95"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="container projects-section" id="projects">
+      <div class="section-head reveal">
+        <h2>Selected Projects</h2>
+        <div class="filters">
+          <button class="filter active" data-filter="*">All</button>
+          <button class="filter" data-filter="web">Web</button>
+          <button class="filter" data-filter="ui">UI</button>
+        </div>
+      </div>
+
+      <div class="projects-grid" id="projects-grid">
+        <!-- Project cards -->
+        <article class="card reveal" data-tags="web">
+          <div class="card-media" aria-hidden="true"></div>
+          <h3>Responsive Dashboard</h3>
+          <p class="muted">A performant admin dashboard with charts and accessibility-first design.</p>
+          <div class="card-actions"><button class="btn small" data-project='{"title":"Responsive Dashboard","desc":"A performant admin dashboard with charts, filters and accessible controls.","link":"#"}'>View</button></div>
+        </article>
+
+        <article class="card reveal" data-tags="ui">
+          <div class="card-media" aria-hidden="true"></div>
+          <h3>Design System</h3>
+          <p class="muted">A living design system with tokens, components, and interactive docs.</p>
+          <div class="card-actions"><button class="btn small" data-project='{"title":"Design System","desc":"Component library with tokens and interactive docs.","link":"#"}'>View</button></div>
+        </article>
+
+        <article class="card reveal" data-tags="web ui">
+          <div class="card-media" aria-hidden="true"></div>
+          <h3>Landing Page</h3>
+          <p class="muted">Animated, SEO-friendly landing page with performant imagery and micro-interactions.</p>
+          <div class="card-actions"><button class="btn small" data-project='{"title":"Landing Page","desc":"Animated, high-conversion landing page with rich interactions.","link":"#"}'>View</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="container about-section" id="about">
+      <div class="section-head reveal"><h2>About Me</h2></div>
+      <div class="about-grid">
+        <p class="reveal">I’m a frontend engineer focused on creating polished interfaces. I care about performance, accessibility, and delightful motion.</p>
+        <ul class="skills reveal">
+          <li>HTML & CSS</li>
+          <li>JavaScript</li>
+          <li>Design Systems</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="container contact-section" id="contact">
+      <div class="section-head reveal"><h2>Contact</h2></div>
+      <form id="contact-form" class="contact-form reveal">
+        <label> Name <input name="name" required /></label>
+        <label> Email <input name="email" type="email" required /></label>
+        <label> Message <textarea name="message" rows="5" required></textarea></label>
+        <div><button type="submit" class="btn">Send</button></div>
+        <p id="form-msg" class="muted" aria-live="polite"></p>
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small class="muted">© <span id="year"></span> Alex — Built with ❤️</small>
+    </div>
+  </footer>
+
+  <!-- Project modal -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-panel" role="dialog" aria-modal="true">
+      <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+      <h3 id="modal-title"></h3>
+      <p id="modal-desc"></p>
+      <a id="modal-link" class="btn" href="#">Open project</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
